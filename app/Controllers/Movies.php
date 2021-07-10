@@ -23,14 +23,17 @@ class Movies extends BaseController
 	}
 
 	public function search(){
-		$page = $this->request->getGet('page') ?? 1;
-		$perPage = $this->request->getGet('perPage') ?? 1;
-		$orderBy = $this->request->getGet('orderBy') ?? 'id';
-		$order = $this->request->getGet('order') ?? 'asc';
+		$page = $this->request->getPost('page') ?? 1;
+		$perPage = $this->request->getPost('perPage') ?? 1;
+		$orderBy = $this->request->getPost('orderBy') ?? 'id';
+		$order = $this->request->getPost('order') ?? 'asc';
 
 		$movies = $this->model->getMovies($page, $perPage, $orderBy, $order);
 		$data['movies'] = $movies;
-		return view('movies/index', $data);
+		$data['page'] = $page;
+		$data['perPage'] = $perPage;
+		$total['total'] = count($this->model->findAll());
+		return view('movies/search_result', $data);
 	}
 
 	public function rate(){

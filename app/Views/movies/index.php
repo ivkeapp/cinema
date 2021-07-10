@@ -29,7 +29,7 @@
                 <option value="desc">Descending</option>
             </select>
             <span>Per page: </span>
-            <select name="orderBy" class="form-control">
+            <select name="perPage" class="form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -45,9 +45,23 @@
 </div>
 
 <script>
-    function search(){
+    function search(page = 1){
 
-        
+        let params = new FormData(document.getElementById('search_form'));
+        params.append('page', page);
+        let url = "<?= site_url('movies/search')?>";
+
+        fetch(url, {
+            method: 'POST',
+            headers:{
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: params
+        })
+        .then(response =>response.text())
+        .then(text => {
+            document.getElementById('movies_list').innerHTML = text;
+        });
 
     }
 </script>
