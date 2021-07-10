@@ -64,6 +64,7 @@
         });
 
     }
+    search();
 </script>
 
 <?php $this->endSection(); ?>
