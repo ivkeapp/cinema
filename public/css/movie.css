@@ -1,0 +1,22 @@
+.movie-title{
+    font-weight: bold;
+    font-size: 25px;
+}
+.movie-start-date{
+    margin-left: 10px;
+    font-weight: bold;
+}
+.movie-poster{
+    width: 100%;
+}
+.rating{
+    color:orange;
+}
+.movie-details{
+    text-align: right;
+}
+.movie{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #8888;
+}
