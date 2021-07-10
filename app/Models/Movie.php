@@ -24,7 +24,7 @@ class Movie extends Model{
                         where mr.movie_id = movie.id) as rating")
             ->orderBy($orderBy, $order)
             ->limit($perPage, ($page -1) * $perPage)
-            ->get();
+            ->get()->getResult();
     }
 
     public function getMovie($id){

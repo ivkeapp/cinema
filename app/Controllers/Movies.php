@@ -19,8 +19,17 @@ class Movies extends BaseController
 
 	public function index()
 	{
-		$movies = $this->model->getMovies();
-		$data['movies'] = $movies->getResult();
+		return view('movies/index');
+	}
+
+	public function search(){
+		$page = $this->request->getGet('page') ?? 1;
+		$perPage = $this->request->getGet('perPage') ?? 1;
+		$orderBy = $this->request->getGet('orderBy') ?? 'id';
+		$order = $this->request->getGet('order') ?? 'asc';
+
+		$movies = $this->model->getMovies($page, $perPage, $orderBy, $order);
+		$data['movies'] = $movies;
 		return view('movies/index', $data);
 	}
 
