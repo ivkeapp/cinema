@@ -11,7 +11,7 @@ class Movie extends Model{
     protected $returnType = 'object';
 
 
-    public function getMovies(){
+    public function getMovies($page=1, $perPage=1, $orderBy='id', $order='asc'){
         return $this->builder()
             ->select("id, title, start_date, short_description, poster, 
                         poster_vertical")
@@ -22,6 +22,8 @@ class Movie extends Model{
             ->select("(SELECT round(COALESCE(avg(rating),0))
                         from movie_rating mr
                         where mr.movie_id = movie.id) as rating")
+            ->orderBy($orderBy, $order)
+            ->limit($perPage, ($page -1) * $perPage)
             ->get();
     }
 
