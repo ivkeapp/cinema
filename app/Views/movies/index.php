@@ -11,7 +11,7 @@
         <div class="col-sm-4 col-xs-12" style="text-align: right;">
             <?php
                 if(logged_in() && has_permission('movie_create')){
-                    echo anchor('movies/create', 'New movie', ['class' => 'btn btn-success']);
+                    echo anchor('movies/create', 'Add new movie', ['class' => 'btn btn-success']);
                 }
             ?>
         </div>
