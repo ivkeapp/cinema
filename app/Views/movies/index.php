@@ -17,12 +17,39 @@
         </div>
     </div>
     <div class="row">
-        <?php
-            foreach($movies as $movie){
-                echo view('movies/movie', ['movie'=>$movie]);
-            }
-        ?>
+        <form id="search_form" class="form-inline">
+            <span>Order by: </span>
+            <select name="orderBy" class="form-control">
+                <option value="id">ID</option>
+                <option value="title">Title</option>
+                <option value="rating">Rating</option>
+            </select>
+            <select name="order" class="form-control">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+            <span>Per page: </span>
+            <select name="orderBy" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <button onclick="search()" type="button" class="btn btn-primary">Search</button>
+        </form>
+
+        <div id="movies_list">
+
+        </div>
     </div>
 </div>
+
+<script>
+    function search(){
+
+        
+
+    }
+</script>
 
 <?php $this->endSection(); ?>
